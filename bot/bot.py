@@ -1,18 +1,21 @@
+import os
 import discord
 import asyncio
 import requests
 from bs4 import BeautifulSoup
 
-TOKEN = "import os
+# Get your bot token from environment variable
 TOKEN = os.environ["TOKEN"]
 
-client.run(TOKEN)
-"
-CHANNEL_ID = 688994932815429697 
+# Channel ID where the bot will post
+CHANNEL_ID = 688994932815429697  
 
+# Set up Discord client with intents
 intents = discord.Intents.default()
+intents.messages = True
 client = discord.Client(intents=intents)
 
+# Categories to monitor
 CATEGORIES = {
     "Miscellaneous": "https://classifieds.swarthmore.edu/category/miscellaneous",
     "Off-Campus Jobs": "https://classifieds.swarthmore.edu/category/off-campus-jobs"
@@ -44,5 +47,5 @@ async def on_ready():
     print(f"✅ Logged in as {client.user}")
     client.loop.create_task(check_classifieds())
 
-
+# Start the bot
 client.run(TOKEN)
