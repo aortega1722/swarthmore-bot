@@ -20,6 +20,9 @@ async def check_classifieds():
     seen_posts = set()
     await client.wait_until_ready()
     channel = client.get_channel(CHANNEL_ID)
+    if channel is None:
+    print(f"Channel {CHANNEL_ID} not found!")
+    return
 
     while not client.is_closed():
         for category, url in CATEGORIES.items():
@@ -47,3 +50,4 @@ try:
     client.run(TOKEN)
 except Exception as e:
     print(f"Bot crashed with error: {e}")
+
