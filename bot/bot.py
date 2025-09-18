@@ -3,7 +3,11 @@ import asyncio
 import requests
 from bs4 import BeautifulSoup
 
-TOKEN = "MTQxNzk0MTE0ODgzOTcxMDgzMA.GSwG5g.HHFWHA5ReMarhEDOzdQtUgsquE2jYPHGwlb0bA "
+TOKEN = "import os
+TOKEN = os.environ["TOKEN"]
+
+client.run(TOKEN)
+"
 CHANNEL_ID = 688994932815429697 
 
 intents = discord.Intents.default()
@@ -39,5 +43,6 @@ async def check_classifieds():
 async def on_ready():
     print(f"✅ Logged in as {client.user}")
     client.loop.create_task(check_classifieds())
+
 
 client.run(TOKEN)
